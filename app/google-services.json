@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "502491631371",
+    "firebase_url": "https://rags-1c7e9.firebaseio.com",
+    "project_id": "rags-1c7e9",
+    "storage_bucket": "rags-1c7e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502491631371:android:cfe54549a51db234b45c0e",
+        "android_client_info": {
+          "package_name": "edu.nyit.healthcareportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "502491631371-p6ho6tl2d80ht17fosdiipm3r3d0f353.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHc7t1S71I8lbGXswWmA-RWCvbNeDLBHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "502491631371-p6ho6tl2d80ht17fosdiipm3r3d0f353.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502491631371:android:0c52576bf995ef21b45c0e",
+        "android_client_info": {
+          "package_name": "edu.nyit.loginsample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "502491631371-qcque8u97v9m5l2kcu5udskvn0qngdhs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.nyit.loginsample",
+            "certificate_hash": "d72c796f65ea2a613781bbe9a47ad37cbc0829c2"
+          }
+        },
+        {
+          "client_id": "502491631371-p6ho6tl2d80ht17fosdiipm3r3d0f353.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHc7t1S71I8lbGXswWmA-RWCvbNeDLBHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "502491631371-p6ho6tl2d80ht17fosdiipm3r3d0f353.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
