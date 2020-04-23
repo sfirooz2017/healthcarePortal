@@ -33,7 +33,7 @@ GlobalData data = GlobalData.getInstance();
         //check if data loads
             for(int x = 0; x< data.getUsers().get(0).getOrders().size(); x++)
             {
-                s = s + data.getUsers().get(x).getPrescriptions().get(x).getName();
+                s = s + data.getUsers().get(0).getOrders().get(x).getNumber();
             }
         textView = root.findViewById(R.id.medsView);
         textView.setText(s);
