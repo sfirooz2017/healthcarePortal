@@ -1,5 +1,7 @@
 package edu.nyit.healthcareportal;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,12 +10,16 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class LoadingActivity extends AppCompatActivity {
 
     private String user;
-    GlobalData data = GlobalData.getInstance();
+    GlobalData data;
 
 
 
@@ -22,6 +28,7 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
+        data = GlobalData.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         user = user.replace(".", "_");
 
@@ -112,7 +119,9 @@ public class LoadingActivity extends AppCompatActivity {
             else
                 {
                     Users newUser = new Users(user);
-                data.getUsers().add(newUser);
+                    List<Users> tempUsers = new ArrayList<>();
+                    tempUsers.add(newUser);
+                    data.setUsers(tempUsers);
             }
             new FirebaseDatabaseHelper("email/" + user + "/orders").getOrders(new FirebaseDatabaseHelper.DataStatus() {
 
@@ -133,9 +142,9 @@ public class LoadingActivity extends AppCompatActivity {
                 @Override
                 public void DataIsChecked(boolean check) {
                 }});
+
             new FirebaseDatabaseHelper("email/" + user + "/prescriptions").getPrescriptions(new FirebaseDatabaseHelper.DataStatus() {
-
-
+                
                 @Override
                 public void PrescriptionIsLoaded(List<Prescriptions> prescriptions, List<String> keys) {
                     data.getUsers().get(0).setPrescriptions(prescriptions);
