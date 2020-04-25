@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (mAuth.getCurrentUser() != null) {
             Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Removes other Activities from stack FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent);
         }
         else

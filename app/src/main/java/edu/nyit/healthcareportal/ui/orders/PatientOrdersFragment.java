@@ -1,6 +1,7 @@
 package edu.nyit.healthcareportal.ui.orders;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,9 +34,10 @@ GlobalData data = GlobalData.getInstance();
         //check if data loads
             for(int x = 0; x< data.getUsers().get(0).getOrders().size(); x++)
             {
-                s = s + data.getUsers().get(x).getPrescriptions().get(x).getName();
+                s = s + data.getUsers().get(0).getOrders().get(x).getNumber();
+                Log.d("shan", s);
             }
-        textView = root.findViewById(R.id.medsView);
+        textView = root.findViewById(R.id.ordersView);
         textView.setText(s);
 
         //user index is always 0

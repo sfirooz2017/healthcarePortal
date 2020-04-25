@@ -45,7 +45,6 @@ public class PatientMedicationFragment extends Fragment {
         }
         textView = root.findViewById(R.id.medsView);
         textView.setText(s);
-        textView.setText(data.getUsers().get(0).getEmail());
 
 
 //refill prescription--first check if refill is due. get current date from data.getDate()

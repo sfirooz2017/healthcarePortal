@@ -14,12 +14,8 @@ public class GlobalData {
         return instance;
     }
 
-
     private boolean admin;
     private List<Users> users;
-
-
-
     private int orderNum;
 
 
