@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context=".ui.medication.PatientMedicationFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,5 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="pateint meds" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+
 
 </LinearLayout>
