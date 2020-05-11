@@ -23,6 +23,8 @@ public class Prescriptions {
         this.user = user;
     }
 
+
+
     public String getName() {
         return name;
     }
