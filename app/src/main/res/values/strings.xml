@@ -26,6 +26,8 @@
     <string name="send_password">Enter email to be sent a reset password link</string>
     <string name="send">Send</string>
 
+    <string name="ordernumber">Order Number: </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

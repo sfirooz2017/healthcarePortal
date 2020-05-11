@@ -2,13 +2,46 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
     app:cardCornerRadius="4sp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="4sp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="78dp"
+            android:layout_marginEnd="314dp"
+            android:layout_marginRight="314dp"
+            android:layout_marginBottom="88dp"
+            android:text="Refill Date:"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="93dp"
+            android:layout_height="27dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="177dp"
+            android:layout_marginLeft="177dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="133dp"
+            android:layout_marginRight="133dp"
+            android:layout_marginBottom="158dp"
+            android:text="Dosage:"
+            android:textSize="18dp" />
 
         <TextView
 
@@ -21,9 +54,11 @@
 
         <TextView
             android:id="@+id/dose"
-            android:layout_width="wrap_content"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="216dp"
+            android:layout_marginBottom="162dp"
             android:layout_toRightOf="@id/drugname"
             android:text="dosage" />
 
@@ -31,7 +66,14 @@
             android:id="@+id/refill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="214dp"
+            android:layout_marginRight="214dp"
+            android:layout_marginBottom="90dp"
             android:text="Refill date"
             android:textSize="20dp" />
 

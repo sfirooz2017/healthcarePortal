@@ -33,7 +33,7 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.orderViewHol
         public orderViewHolder(@NonNull View itemView) {
 
             super(itemView);
-            mOrderNumber = itemView.findViewById(R.id.ordernumber);
+            mOrderNumber = itemView.findViewById(R.id.ordernumberlabel);
             mOrderContent = itemView.findViewById(R.id.ordercontent);
             mOrderTransit = itemView.findViewById(R.id.transit);
             mOrderArrival = itemView.findViewById(R.id.arrivedate);
@@ -63,7 +63,12 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.orderViewHol
     @Override
     public void onBindViewHolder(@NonNull orderViewHolder holder, int position) {
         Orders currentorder = orders.get(position);
-        holder.mOrderNumber.setText("Order Number:"+currentorder.getNumber());
+
+
+
+
+
+        holder.mOrderNumber.setText(currentorder.getNumber());
         holder.mOrderContent.setText(currentorder.getContains());
         holder.mOrderTransit.setText("In Transit:"+currentorder.getInTransit());
         holder.mOrderArrival.setText("Arrival Date:"+currentorder.getArrived());
