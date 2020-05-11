@@ -38,11 +38,6 @@ public class PatientOrdersFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_orders, container, false);
 
 
-        String s = "";
-
-        //check if data loads
-
-
 
         PatientrecyclerView = root.findViewById(R.id.orderRecyclerPatient);
 

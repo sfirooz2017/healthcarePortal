@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:isScrollContainer="true"
+    android:orientation="vertical"
+    android:windowSoftInputMode="stateVisible|adjustResize"
     tools:context=".ui.home.AdminHomeFragment">
 
     <LinearLayout
@@ -11,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
 
@@ -46,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Refill Date"
+            android:hint="Refill Date (DD/MM/YY)"
             android:inputType="textPersonName" />
 
         <EditText
@@ -64,12 +65,12 @@
             android:text="Submit" />
 
         <TextView
-            android:layout_marginTop="30dp"
             android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:text="Adding Refill"
-            android:textColor="#090606"/>
+            android:textColor="#090606" />
 
         <EditText
             android:id="@+id/inputEmail2"
@@ -92,7 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Refill Date"
+            android:hint="Refill Date (DD/MM/YY)"
             android:inputType="textPersonName" />
 
         <EditText

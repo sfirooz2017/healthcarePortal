@@ -46,8 +46,6 @@ public class AdminOrdersFragment extends Fragment {
 
         textView = root.findViewById(R.id.adminOrdersView);
 
-        String s = "";
-        // check if data loads
      for (int x =0 ;x<data.getUsers().size();x++)
     for (int y=0;y<data.getUsers().get(x).getOrders().size();y++){
 
@@ -56,14 +54,12 @@ public class AdminOrdersFragment extends Fragment {
     }
 
         RecyclerView adminrecyclerView = root.findViewById(R.id.orderRecyclerAdmin);
-        //textView.setText(s);
+
         layoutManager = new LinearLayoutManager(getContext());
         RecyclerView.Adapter adminmAdapter = new AdminOrderAdapter((ordersList));
         adminrecyclerView.setAdapter(adminmAdapter);
         adminrecyclerView.setLayoutManager(layoutManager);
 
-
-        //return root;
 
 
 

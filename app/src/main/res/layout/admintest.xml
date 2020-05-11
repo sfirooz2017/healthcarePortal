@@ -6,10 +6,29 @@
         app:cardCornerRadius="4dp">
 
     <RelativeLayout
+        android:id="@+id/sampleorderA"
         android:layout_width="match_parent"
-        android:layout_height="106dp"
-        android:layout_margin="4dp"
-        android:id="@+id/sampleorderA">
+        android:layout_height="142dp"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/patientEmailOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="97dp"
+            android:layout_marginEnd="239dp"
+            android:layout_marginRight="239dp"
+            android:layout_marginBottom="18dp"
+            android:text="Patient Email"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/ordernumberA"
@@ -26,27 +45,26 @@
             android:layout_marginEnd="245dp"
             android:layout_marginRight="245dp"
             android:text="OrderNumber"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/ordercontentA"
             android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:id="@+id/ordercontentA"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginLeft="6dp"
             android:layout_marginTop="2sp"
-            android:layout_marginEnd="232dp"
-            android:layout_marginRight="232dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginEnd="236dp"
+            android:layout_marginRight="236dp"
+            android:layout_marginBottom="97dp"
             android:text="Order Content"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/intransitA"
@@ -57,11 +75,11 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="322dp"
-            android:layout_marginLeft="322dp"
-            android:layout_marginEnd="23dp"
-            android:layout_marginRight="22dp"
-            android:layout_marginBottom="71dp"
+            android:layout_marginStart="294dp"
+            android:layout_marginLeft="294dp"
+            android:layout_marginEnd="51dp"
+            android:layout_marginRight="51dp"
+            android:layout_marginBottom="103dp"
             android:text="intransit" />
 
         <TextView
@@ -71,9 +89,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="22dp"
-            android:layout_marginRight="22dp"
-            android:layout_marginBottom="31dp"
+            android:layout_marginEnd="46dp"
+            android:layout_marginRight="46dp"
+            android:layout_marginBottom="60dp"
             android:text="arrivaldate" />
 
         <TextView
@@ -81,12 +99,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="70dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@+id/arrivedateA"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="107dp"
             android:layout_toStartOf="@+id/arrivedateA"
+            android:layout_toLeftOf="@+id/arrivedateA"
             android:text="leftcenter" />
+
+        <Button
+            android:id="@+id/arrivedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="69dp"
+            android:layout_marginRight="69dp"
+            android:layout_marginBottom="6dp"
+            android:text="Order Arrived" />
 
 
     </RelativeLayout>

@@ -64,6 +64,7 @@ public adminMedsAdapter(ArrayList<Prescriptions> prescriptions){
         holder.madminmedsMedication.setText(medicationList.getName());
         holder.madminmedsDosage.setText(medicationList.getDose());
         holder.madminmedsRefill.setText(medicationList.getRefill());
+        holder.madminmedsEmail.setText(medicationList.getUser());
        // holder.madminmedsEmail.setText(data.getUsers().get(position).getEmail());
 
 
@@ -73,7 +74,6 @@ public adminMedsAdapter(ArrayList<Prescriptions> prescriptions){
 
     @Override
     public int getItemCount() {
-    Log.d("shan", prescriptions.size() + "");
     return prescriptions.size();
     }
 }

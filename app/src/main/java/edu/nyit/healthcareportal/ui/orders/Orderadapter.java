@@ -70,6 +70,7 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.orderViewHol
 
         holder.mOrderNumber.setText(currentorder.getNumber());
         holder.mOrderContent.setText(currentorder.getContains());
+
         holder.mOrderTransit.setText("In Transit:"+currentorder.getInTransit());
         holder.mOrderArrival.setText("Arrival Date:"+currentorder.getArrived());
         holder.mOrderLeftCenter.setText("Left Center:"+currentorder.getLeftCenter());
