@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,62 +73,48 @@ public class AdminHomeFragment extends Fragment {
         mSubmit = (Button) root.findViewById(R.id.buttonConfirm);
 
 
-// RefillOrder
+// new order
 
-        // calling second button
-        mSubmit.setOnClickListener(new View.OnClickListener() {
+        nSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                email2 = mEmail.getText().toString();
-                prescription2 = mPrescription.getText().toString();
-                refill2 = mRefill.getText().toString();
-                dosage2 = mDosage.getText().toString();
+                email = nEmail.getText().toString();
+                prescription = nPrescription.getText().toString();
+                refill = nRefill.getText().toString();
+                dosage = nDosage.getText().toString();
 
 
-                if (TextUtils.isEmpty(email2)) {
-                    mEmail.setError("Email required");
+                if (TextUtils.isEmpty(email)) {
+                    nEmail.setError("Email required");
                     return;
-                } else if (TextUtils.isEmpty(prescription2)) {
-                    mPrescription.setError("Medication required");
+                } else if (TextUtils.isEmpty(prescription)) {
+                    nPrescription.setError("Medication required");
                     return;
 
-                } else if (!EMAIL_PATTERN.matcher(email2).matches()) {
-                    mEmail.setError("Invalid email address");
+                } else if (!EMAIL_PATTERN.matcher(email).matches()) {
+                    nEmail.setError("Invalid email address");
                     return;
-                } else if (TextUtils.isEmpty(dosage2)) {
-                    mDosage.setError("dosage required");
+                } else if (TextUtils.isEmpty(dosage)) {
+                    nDosage.setError("dosage required");
                     return;
-                } else if (TextUtils.isEmpty(refill2)) {
-                    mRefill.setError("refill date required");
+                } else if (TextUtils.isEmpty(refill)) {
+                    nRefill.setError("refill date required");
                     return;
                 }
-
-                email2 =  email2.replace(".", "_");
+                email = email.replace(".", "_");
                 boolean valid = false;
-                boolean valid2 = false;
-                int x;
-                for(x = 0; x < data.getUsers().size();x++)
-
-                {
-                    if(data.getUsers().get(x).getEmail().equals(email2)) {
+                for (int x = 0; x < data.getUsers().size(); x++) {
+                    if (data.getUsers().get(x).getEmail().equals(email)) {
                         valid = true;
                         break;
                     }
 
                 }
-                for(int y = 0; y < data.getUsers().get(x).getPrescriptions().size();y++)
+                if (valid)  {    // updates refill
+                    refillOrder(email, prescription, refill, dosage);
+                    Toast.makeText(AdminHomeFragment.this.getContext(), "Addition Successful!", Toast.LENGTH_SHORT).show();
 
-                {
-                    if(data.getUsers().get(x).getPrescriptions().get(y).equals(prescription2))
-                        valid2 = true;
-
-                }
-
-
-                if (valid && valid2){
-
-                    refillOrder(email2, prescription2, refill2, dosage2);
 
 
                 } else {
@@ -139,8 +126,9 @@ public class AdminHomeFragment extends Fragment {
             } // ends onClick1
 
 
-
         });  // ends setOnclick1
+
+
 
 
         /// start 1-- update
@@ -150,49 +138,65 @@ public class AdminHomeFragment extends Fragment {
 
         //(updates  Dosage
 
-        nSubmit.setOnClickListener(new View.OnClickListener() {
+        mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                email = nEmail.getText().toString();
-                prescription = nPrescription.getText().toString();
-                dosage = nDosage.getText().toString();
-                refill = nRefill.getText().toString();
+                email2 = mEmail.getText().toString();
+                prescription2 = mPrescription.getText().toString();
+                dosage2 = mDosage.getText().toString();
+                refill2 = mRefill.getText().toString();
 
 
                 //int i2 = data.getUsers().get(i).getPrescriptions().indexOf("med");(this is for changing refill or dosge)
 
-                if (TextUtils.isEmpty(email)) {
-                    nEmail.setError("Email required");
+                if (TextUtils.isEmpty(email2)) {
+                    mEmail.setError("Email required");
                     return;
-                } else if (!EMAIL_PATTERN.matcher(email).matches()) {
-                    nEmail.setError("Invalid email address");
+                } else if (!EMAIL_PATTERN.matcher(email2).matches()) {
+                    mEmail.setError("Invalid email address");
                     return;
-                } else if (TextUtils.isEmpty(prescription)) {
-                    nPrescription.setError("Prescription required");
+                } else if (TextUtils.isEmpty(prescription2)) {
+                    mPrescription.setError("Prescription required");
                     return;
                 }
-                email =  email.replace(".", "_");
+                email2 = email2.replace(".", "_");
                 boolean valid = false;
-                for(int x = 0; x < data.getUsers().size();x++)
-
-                {
-                    if(data.getUsers().get(x).getEmail().equals(email))
+                boolean valid2 = false;
+                int x, y = 0;
+                for (x = 0; x < data.getUsers().size(); x++) {
+                    if (data.getUsers().get(x).getEmail().equals(email2)) {
                         valid = true;
+                        break;
+                    }
 
                 }
-                if (!valid)      // updates refill
-                    Toast.makeText(AdminHomeFragment.this.getContext(), "Invalid User", Toast.LENGTH_SHORT).show();
+                if (valid)
+                    for (y = 0; y < data.getUsers().get(x).getPrescriptions().size(); y++) {
+                        if (data.getUsers().get(x).getPrescriptions().get(y).getName().equals(prescription2)) {
+                            valid2 = true;
+                            break;
+                        }
+
+                    }
+
+
+                if ((valid) && (valid2)) {
+                    if (!TextUtils.isEmpty(refill2)) {
+                        data.getUsers().get(x).getPrescriptions().get(y).setRefill(refill2);
+                        new FirebaseDatabaseHelper("email/" + email2 + "/prescriptions/" + prescription2 + "/" + "refill").updateData(refill2);
+                        Toast.makeText(AdminHomeFragment.this.getContext(), "Update Successful!", Toast.LENGTH_SHORT).show();
+                    }
+                    if (!TextUtils.isEmpty(dosage2)) {
+                        data.getUsers().get(x).getPrescriptions().get(y).setDose(dosage2);
+
+
+                        new FirebaseDatabaseHelper("email/" + email2 + "/prescriptions/" + prescription2 + "/" + "dose").updateData(dosage2);
+                        Toast.makeText(AdminHomeFragment.this.getContext(), "Update Successful!", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 else {
-                    if (!TextUtils.isEmpty(refill)) {
-                        new FirebaseDatabaseHelper("email/" + email + "/prescriptions/" + prescription + "/" + "refill").updateData(refill);
-                    }
-                    if (!TextUtils.isEmpty(dosage)) {
-                        new FirebaseDatabaseHelper("email/" + email + "/prescriptions/" + prescription + "/" + "dosage").updateData(dosage);
-                    }
-
-
-
+                Toast.makeText(AdminHomeFragment.this.getContext(), "Invalid User or Prescription", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -200,17 +204,19 @@ public class AdminHomeFragment extends Fragment {
             }  // ends Onclick2
         });  // set onClick2
 
-    return root;
 
+
+        return root;
     };
 
 
 
 
 
+
     public void refillOrder(String email, String prescription, String refill, String dosage) {
-      //  Prescriptions p = new Prescriptions(prescription, refill,dosage); //name, refill, dosage
-        Prescriptions p = new Prescriptions("medicinename", "1/2/3", "10 mg");
+        Prescriptions p = new Prescriptions(prescription, refill,dosage); //name, refill, dosage
+       // Prescriptions p = new Prescriptions("medicinename", "1/2/3", "10 mg");
         new FirebaseDatabaseHelper("email/" + email + "/prescriptions").addPrescription(p, new FirebaseDatabaseHelper.DataStatus() {
 
             @Override

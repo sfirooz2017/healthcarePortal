@@ -6,6 +6,7 @@ public class Prescriptions {
     private String name;
     private String refill;
     private String dose;
+    private String user;
     public Prescriptions()
     {}
 
@@ -14,6 +15,12 @@ public class Prescriptions {
         this.name = name;
         this.refill = refill;
         this.dose = dose;
+    }
+    public Prescriptions(String name, String refill, String dose, String user) {
+        this.name = name;
+        this.refill = refill;
+        this.dose = dose;
+        this.user = user;
     }
 
     public String getName() {
@@ -43,5 +50,13 @@ public class Prescriptions {
         this.refill = refill;
     }
 
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
 }

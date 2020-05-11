@@ -72,7 +72,7 @@ public class FirebaseDatabaseHelper {
             public void onCancelled(@NonNull DatabaseError databaseError) { } });
     }
 
-    public void getPrescriptions(final DataStatus dataStatus)
+    public void getPrescriptions(final String email, final DataStatus dataStatus)
     {
         mreference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -83,6 +83,7 @@ public class FirebaseDatabaseHelper {
                 for (final DataSnapshot keyNode : dataSnapshot.getChildren()) {
                     keys.add(keyNode.getKey());
                     final Prescriptions prescription = keyNode.getValue(Prescriptions.class);
+                    prescription.setUser(email);
                     prescriptions.add(prescription);
                 }
                 dataStatus.PrescriptionIsLoaded(prescriptions, keys);
@@ -145,12 +146,12 @@ public class FirebaseDatabaseHelper {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.d(TAG, "could not delete");
+
                     }
                 });
     }
 
-    public void getOrders(final DataStatus dataStatus)
+    public void getOrders(final String email, final DataStatus dataStatus)
     {
         mreference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -161,7 +162,7 @@ public class FirebaseDatabaseHelper {
                 for (final DataSnapshot keyNode : dataSnapshot.getChildren()) {
                     keys.add(keyNode.getKey());
                     final Orders order = keyNode.getValue(Orders.class);
-                    Log.d("shans", keyNode.getValue() + "");
+                    order.setUser(email);
                     orders.add(order);
                 }
                 dataStatus.OrderIsLoaded(orders, keys);

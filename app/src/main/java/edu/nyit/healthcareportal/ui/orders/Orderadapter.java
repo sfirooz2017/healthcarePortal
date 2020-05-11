@@ -67,7 +67,6 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.orderViewHol
         holder.mOrderTransit.setText(currentorder.getInTransit());
         holder.mOrderArrival.setText(currentorder.getArrived());
         holder.mOrderLeftCenter.setText(currentorder.getLeftCenter());
-        Log.d("arda", currentorder.getNumber()+"this isnt working");
 
     }
 

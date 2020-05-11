@@ -123,7 +123,7 @@ public class LoadingActivity extends AppCompatActivity {
                     tempUsers.add(newUser);
                     data.setUsers(tempUsers);
             }
-            new FirebaseDatabaseHelper("email/" + user + "/orders").getOrders(new FirebaseDatabaseHelper.DataStatus() {
+            new FirebaseDatabaseHelper("email/" + user + "/orders").getOrders(user, new FirebaseDatabaseHelper.DataStatus() {
 
 
                 @Override
@@ -143,7 +143,7 @@ public class LoadingActivity extends AppCompatActivity {
                 public void DataIsChecked(boolean check) {
                 }});
 
-            new FirebaseDatabaseHelper("email/" + user + "/prescriptions").getPrescriptions(new FirebaseDatabaseHelper.DataStatus() {
+            new FirebaseDatabaseHelper("email/" + user + "/prescriptions").getPrescriptions(user, new FirebaseDatabaseHelper.DataStatus() {
                 
                 @Override
                 public void PrescriptionIsLoaded(List<Prescriptions> prescriptions, List<String> keys) {
@@ -166,7 +166,7 @@ public void loadUsers()
             {
                 for (int x = 0; x < data.getUsers().size(); x++) {
                     final int finalX = x;
-                    new FirebaseDatabaseHelper("email/" + data.getUsers().get(x).getEmail() + "/orders").getOrders(new FirebaseDatabaseHelper.DataStatus() {
+                    new FirebaseDatabaseHelper("email/" + data.getUsers().get(x).getEmail() + "/orders").getOrders(data.getUsers().get(x).getEmail(), new FirebaseDatabaseHelper.DataStatus() {
                         @Override
                         public void PrescriptionIsLoaded(List<Prescriptions> prescriptions, List<String> keys) {
 
@@ -185,12 +185,13 @@ public void loadUsers()
                         @Override
                         public void DataIsChecked(boolean check) { }
                     });
-                    new FirebaseDatabaseHelper("email/" + data.getUsers().get(x).getEmail() + "/prescriptions").getPrescriptions(new FirebaseDatabaseHelper.DataStatus() {
+                    new FirebaseDatabaseHelper("email/" + data.getUsers().get(x).getEmail() + "/prescriptions").getPrescriptions(data.getUsers().get(x).getEmail(), new FirebaseDatabaseHelper.DataStatus() {
 
 
                         @Override
                         public void PrescriptionIsLoaded(List<Prescriptions> prescriptions, List<String> keys) {
                             data.getUsers().get(finalX).setPrescriptions(prescriptions);
+
                             finished();
                         }
                         @Override

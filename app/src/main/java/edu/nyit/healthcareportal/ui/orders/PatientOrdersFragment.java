@@ -43,7 +43,7 @@ public class PatientOrdersFragment extends Fragment {
         //check if data loads
         for (int x = 0; x < data.getUsers().get(0).getOrders().size(); x++) {
             s = s + data.getUsers().get(0).getOrders().get(x).getNumber();
-            Log.d("shan", s);
+
         }
 
 

@@ -7,6 +7,7 @@ public class Orders
         private String leftCenter;
         private String inTransit;
         private String number;
+        private String user;
 
     public Orders(String arrived, String contains, String leftCenter, String inTransit, String number) {
         this.arrived = arrived;
@@ -55,6 +56,13 @@ public class Orders
     public void setNumber(String number){this.number = number;}
 
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
 
 }

@@ -38,7 +38,6 @@ public class GlobalData {
 
     public String getDate() {
         String date = new SimpleDateFormat("dd/MM/yy", Locale.getDefault()).format(new Date());
-        Log.d("shan", date);
         return date;
 
     }

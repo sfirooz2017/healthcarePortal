@@ -82,13 +82,15 @@ public class MainActivity extends AppCompatActivity {
                     .setDrawerLayout(drawer)
                     .build();
 
+            navController.setGraph(graph);
+            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+            NavigationUI.setupWithNavController(navigationView, navController);
+
+            orderArrived(5, 3);
+
         }
 
-        navController.setGraph(graph);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
 
-        orderArrived(5, 3);
 
        // notificationHelper = new NotificationHelper(this);
         //displayNotification();
