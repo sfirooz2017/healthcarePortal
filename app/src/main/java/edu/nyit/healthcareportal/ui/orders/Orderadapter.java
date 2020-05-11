@@ -57,6 +57,7 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.orderViewHol
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.exampleitem, parent, false);
         orderViewHolder evh = new orderViewHolder(v);
         return evh;
+
     }
 
     @Override
@@ -64,9 +65,9 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.orderViewHol
         Orders currentorder = orders.get(position);
         holder.mOrderNumber.setText("Order Number:"+currentorder.getNumber());
         holder.mOrderContent.setText(currentorder.getContains());
-        holder.mOrderTransit.setText(currentorder.getInTransit());
-        holder.mOrderArrival.setText(currentorder.getArrived());
-        holder.mOrderLeftCenter.setText(currentorder.getLeftCenter());
+        holder.mOrderTransit.setText("In Transit:"+currentorder.getInTransit());
+        holder.mOrderArrival.setText("Arrival Date:"+currentorder.getArrived());
+        holder.mOrderLeftCenter.setText("Left Center:"+currentorder.getLeftCenter());
         Log.d("arda", currentorder.getNumber()+"this isnt working");
 
     }

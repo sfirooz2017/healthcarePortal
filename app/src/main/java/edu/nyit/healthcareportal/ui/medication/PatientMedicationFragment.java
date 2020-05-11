@@ -13,20 +13,34 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import edu.nyit.healthcareportal.FirebaseDatabaseHelper;
 import edu.nyit.healthcareportal.GlobalData;
 import edu.nyit.healthcareportal.Orders;
 import edu.nyit.healthcareportal.Prescriptions;
 import edu.nyit.healthcareportal.R;
 import edu.nyit.healthcareportal.Users;
+import edu.nyit.healthcareportal.ui.orders.Orderadapter;
 
 public class PatientMedicationFragment extends Fragment {
+    private RecyclerView PatientrecyclerView;
+    private RecyclerView.Adapter PatientmAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+
+
+
     TextView textView;
+
+
+
     GlobalData data = GlobalData.getInstance();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,8 +57,16 @@ public class PatientMedicationFragment extends Fragment {
             //check if user data loads
             s = s + data.getUsers().get(0).getPrescriptions().get(x).getName();
         }
-        textView = root.findViewById(R.id.medsView);
-        textView.setText(s);
+
+
+
+
+        PatientrecyclerView = root.findViewById(R.id.medRecylerPatient);
+        layoutManager = new LinearLayoutManager(getContext());
+        PatientmAdapter = new patientMedAdapter((ArrayList<Prescriptions>) data.getUsers().get(0).getPrescriptions());
+        PatientrecyclerView.setAdapter(PatientmAdapter);
+        PatientrecyclerView.setLayoutManager(layoutManager);
+
 
 
 //refill prescription--first check if refill is due. get current date from data.getDate()

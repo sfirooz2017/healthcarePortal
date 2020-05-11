@@ -6,13 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.PatientHomeFragment">
 
-    <TextView
-        android:id="@+id/textView4"
+    <Button
+        android:id="@+id/orderplace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="patient home"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="65dp" />
+        android:text="Place Order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Order:"
+        app:layout_constraintBottom_toTopOf="@+id/orderplace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.718" />
+
+    <EditText
+        android:id="@+id/neworder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/orderplace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

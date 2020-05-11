@@ -16,6 +16,8 @@ public class Prescriptions {
         this.dose = dose;
     }
 
+
+
     public String getName() {
         return name;
     }
