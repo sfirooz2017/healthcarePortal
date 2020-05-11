@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="patient home"
-        tools:layout_editor_absoluteX="124dp"
-        tools:layout_editor_absoluteY="62dp" />
+        tools:layout_editor_absoluteX="188dp"
+        tools:layout_editor_absoluteY="65dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
