@@ -82,13 +82,17 @@ public class MainActivity extends AppCompatActivity {
                     .setDrawerLayout(drawer)
                     .build();
 
-            navController.setGraph(graph);
-            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-            NavigationUI.setupWithNavController(navigationView, navController);
-
+            for(int x = 0; x < GlobalData.getInstance().getUsers().get(0).getOrders().size();x++)
+            {
+                String[] tempDate = GlobalData.getInstance().getUsers().get(0).getOrders().get(x).getArrived().split("/");
+                orderArrived(Integer.parseInt(tempDate[1]), Integer.parseInt(tempDate[0]));
+            }
             orderArrived(5, 3);
-
         }
+
+        navController.setGraph(graph);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
 
 
@@ -137,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
     public void orderArrived(int m, int d)
     {
         Calendar c = Calendar.getInstance();
-        c.set(Calendar.DAY_OF_MONTH, d);
-        c.set(Calendar.MONTH, m - 1); //Android calender starts at 0
+        c.set(Calendar.DAY_OF_MONTH, 3);
+        c.set(Calendar.MONTH, 4);
         startAlarm(c);
 
     }
