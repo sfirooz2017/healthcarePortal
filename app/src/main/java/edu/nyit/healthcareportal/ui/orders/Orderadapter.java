@@ -21,7 +21,7 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.orderViewHol
 
 
 
-    public static class orderViewHolder extends RecyclerView.ViewHolder{
+        public static class orderViewHolder extends RecyclerView.ViewHolder{
         public TextView mOrderNumber;
         public TextView mOrderContent;
         public TextView mOrderTransit;
@@ -78,4 +78,4 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.orderViewHol
         return orders.size();
 
     }
-}
+        }

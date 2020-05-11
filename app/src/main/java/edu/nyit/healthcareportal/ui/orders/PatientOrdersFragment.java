@@ -29,12 +29,10 @@ public class PatientOrdersFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
 
     TextView textView;
-GlobalData data = GlobalData.getInstance();
+    GlobalData data = GlobalData.getInstance();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-
 
 
         View root = inflater.inflate(R.layout.fragment_orders, container, false);
@@ -43,17 +41,13 @@ GlobalData data = GlobalData.getInstance();
         String s = "";
 
         //check if data loads
-            for(int x = 0; x< data.getUsers().get(0).getOrders().size(); x++)
-            {
-                s = s + data.getUsers().get(0).getOrders().get(x).getNumber();
 
-            }
 
 
         PatientrecyclerView = root.findViewById(R.id.orderRecyclerPatient);
 
 
-                layoutManager = new LinearLayoutManager(getContext());
+        layoutManager = new LinearLayoutManager(getContext());
         PatientmAdapter = new Orderadapter((ArrayList<Orders>) data.getUsers().get(0).getOrders());
         PatientrecyclerView.setAdapter(PatientmAdapter);
         PatientrecyclerView.setLayoutManager(layoutManager);
@@ -63,12 +57,10 @@ GlobalData data = GlobalData.getInstance();
         //create method to calculate transit dates-- use data.getDate() to get current date
 
 
-
-
         return root;
     }
-    public void makeAnOrder()
-    {
+
+    public void makeAnOrder() {
         String obj = "fruit";
         //to make a new order, you must increment the order number so each number has a unique oder number. then pass new order number when making new order
         String num = String.valueOf(data.getOrderNum() + 1);
@@ -100,7 +92,6 @@ GlobalData data = GlobalData.getInstance();
             public void DataIsChecked(boolean check) {
             }
         });
+
     }
-
-
 }

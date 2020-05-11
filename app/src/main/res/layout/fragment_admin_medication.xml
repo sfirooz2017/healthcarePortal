@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".ui.medication.AdminMedicationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/adminMedsView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:scrollX="@android:dimen/app_icon_size"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="not working" />
+        android:scrollbars="vertical"
+        android:padding="4dp"
+        android:background="@android:color/darker_gray"
+        android:id= "@+id/adminmedsRecyclerView"/>
 
-</LinearLayout>
+</RelativeLayout>
