@@ -6,22 +6,28 @@
     android:orientation="vertical"
     tools:context=".ui.orders.AdminOrdersFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/adminOrdersView"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/searchViewAdminOrders"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="admin orders" />
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Enter order number, order content, email, or left center date "
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderRecyclerAdmin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
+        android:layout_below="@+id/searchViewAdminOrders"
+        android:layout_marginTop="-1dp"
+        android:background="@android:color/darker_gray"
         android:padding="4dp"
-        android:background="@android:color/darker_gray" />
-
+        android:scrollbars="vertical" />
 
 
 </RelativeLayout>

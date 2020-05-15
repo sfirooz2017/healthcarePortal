@@ -1,6 +1,8 @@
 package edu.nyit.healthcareportal.ui.orders;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import edu.nyit.healthcareportal.AdminOrderAdapter;
 import edu.nyit.healthcareportal.FirebaseDatabaseHelper;
 import edu.nyit.healthcareportal.GlobalData;
 import edu.nyit.healthcareportal.Orders;
@@ -28,7 +31,7 @@ public class PatientOrdersFragment extends Fragment {
     private RecyclerView.Adapter PatientmAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    TextView textView;
+    TextView searchView;
     GlobalData data = GlobalData.getInstance();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -38,55 +41,60 @@ public class PatientOrdersFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_orders, container, false);
 
 
-
+        searchView = root.findViewById(R.id.searchViewPatientOrders);
         PatientrecyclerView = root.findViewById(R.id.orderRecyclerPatient);
-
-
         layoutManager = new LinearLayoutManager(getContext());
-        PatientmAdapter = new Orderadapter((ArrayList<Orders>) data.getUsers().get(0).getOrders());
-        PatientrecyclerView.setAdapter(PatientmAdapter);
-        PatientrecyclerView.setLayoutManager(layoutManager);
+
+        search("");
 
 
-        //user index is always 0
-        //create method to calculate transit dates-- use data.getDate() to get current date
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setFocusableInTouchMode(true);
+            }
+        });
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                String search = s.toString().toLowerCase();
+                search = search + "";
+                search(search);
+
+            }
+        });
 
 
         return root;
     }
+    private void search(final String s) {
 
-    public void makeAnOrder() {
-        String obj = "fruit";
-        //to make a new order, you must increment the order number so each number has a unique oder number. then pass new order number when making new order
-        String num = String.valueOf(data.getOrderNum() + 1);
-        new FirebaseDatabaseHelper("orderNumber/").updateData(num);
-        Orders order = new Orders("06/01/20", obj, "06/02/20", "06/03/20", num);
-        new FirebaseDatabaseHelper("email/" + GlobalData.getInstance().getUsers().get(0).getEmail() + "/orders").addOrder(order, new FirebaseDatabaseHelper.DataStatus() {
+        List<Orders> temp = new ArrayList<>();
+        temp.clear();
 
-            @Override
-            public void PrescriptionIsLoaded(List<Prescriptions> prescriptions, List<String> keys) {
-            }
+        for (int x = 0; x < data.getUsers().get(0).getOrders().size(); x++) {
+            if (data.getUsers().get(0).getOrders().get(x).getContains().contains(s) || data.getUsers().get(0).getOrders().get(x).getNumber().contains(s) || data.getUsers().get(0).getOrders().get(x).getLeftCenter().contains(s)|| s.equals(""))
+                temp.add(data.getUsers().get(0).getOrders().get(x));
+        }
+        PatientmAdapter = new Orderadapter((ArrayList<Orders>) temp);
+        PatientrecyclerView.setAdapter(PatientmAdapter);
+        PatientrecyclerView.setLayoutManager(layoutManager);
 
-            @Override
-            public void OrderIsLoaded(List<Orders> orders, List<String> keys) {
-            }
-
-            @Override
-            public void UserIsLoaded(List<Users> users, List<String> keys) {
-            }
-
-            @Override
-            public void DataIsInserted() {
-            }
-
-            @Override
-            public void OrderNumberLoaded(int num) {
-            }
-
-            @Override
-            public void DataIsChecked(boolean check) {
-            }
-        });
 
     }
+
+
+
 }

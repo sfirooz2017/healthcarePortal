@@ -6,7 +6,17 @@
     android:orientation="vertical"
     tools:context=".ui.medication.PatientMedicationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:id="@+id/searchViewPatientMeds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Enter a name or refill date"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/medRecylerPatient"
@@ -14,12 +24,6 @@
         android:layout_height="match_parent"
         android:padding="4sp"
         android:scrollbars="vertical" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
 
 
 </LinearLayout>

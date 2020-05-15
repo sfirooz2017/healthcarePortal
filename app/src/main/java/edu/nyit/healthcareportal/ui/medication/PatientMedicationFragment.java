@@ -1,6 +1,8 @@
 package edu.nyit.healthcareportal.ui.medication;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -28,6 +30,7 @@ import edu.nyit.healthcareportal.Orders;
 import edu.nyit.healthcareportal.Prescriptions;
 import edu.nyit.healthcareportal.R;
 import edu.nyit.healthcareportal.Users;
+import edu.nyit.healthcareportal.adminMedsAdapter;
 import edu.nyit.healthcareportal.ui.orders.Orderadapter;
 
 public class PatientMedicationFragment extends Fragment {
@@ -36,9 +39,7 @@ public class PatientMedicationFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
 
 
-
-    TextView textView;
-
+    TextView searchView;
 
 
     GlobalData data = GlobalData.getInstance();
@@ -48,61 +49,70 @@ public class PatientMedicationFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_medication, container, false);
 
-        String s = "";
+        searchView = root.findViewById(R.id.searchViewPatientMeds);
+        searchView.setFocusable(true);
+        searchView.requestFocus();
 
-        // PATIENT IS ALWAYS INDEX 0
-
-        for(int x = 0; x< data.getUsers().get(0).getPrescriptions().size(); x++)
-        {
-            //check if user data loads
-            s = s + data.getUsers().get(0).getPrescriptions().get(x).getName();
-        }
 
 
 
 
         PatientrecyclerView = root.findViewById(R.id.medRecylerPatient);
         layoutManager = new LinearLayoutManager(getContext());
-        PatientmAdapter = new patientMedAdapter((ArrayList<Prescriptions>) data.getUsers().get(0).getPrescriptions());
-        PatientrecyclerView.setAdapter(PatientmAdapter);
-        PatientrecyclerView.setLayoutManager(layoutManager);
+        // PATIENT IS ALWAYS INDEX 0
+        search("");
 
 
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setFocusableInTouchMode(true);
+            }
+        });
+        searchView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-//refill prescription--first check if refill is due. get current date from data.getDate()
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                String search = s.toString().toLowerCase();
+                search = search + "";
+                search(search);
+
+            }
+        });
+
 
 
 
 
         return root;
-        }
-        public void makeAnOrder()
-        {
+    }
+    private void search(final String s) {
 
-            String num = String.valueOf(data.getOrderNum() + 1);
-            new FirebaseDatabaseHelper("orderNumber/").updateData(num);
-            //ORDER prescription
-            String prescription = "zolof";
-            //to make a new order, you must increment the order number so each number has a unique oder number. then pass new order number when making new order
-            Orders order = new Orders("06/01/20", prescription, "06/02/20", "06/03/20", "4567");
-            new FirebaseDatabaseHelper("email/" + GlobalData.getInstance().getUsers().get(0).getEmail() + "/orders").addOrder(order, new FirebaseDatabaseHelper.DataStatus() {
+        List<Prescriptions> temp = new ArrayList<>();
+        temp.clear();
 
-                @Override
-                public void PrescriptionIsLoaded(List<Prescriptions> prescriptions, List<String> keys) { }
-                @Override
-                public void OrderIsLoaded(List<Orders> orders, List<String> keys) { }
-                @Override
-                public void UserIsLoaded(List<Users> users, List<String> keys) { }
-                @Override
-                public void DataIsInserted() {
-                    //on success is here
-                }
-                @Override
-                public void OrderNumberLoaded(int num) { }
-                @Override
-                public void DataIsChecked(boolean check) {}
-            });
-        }
+        if (data.getUsers().get(0).getPrescriptions().size() != 0)
+            for (int x = 0; x < data.getUsers().get(0).getPrescriptions().size(); x++) {
+                if (data.getUsers().get(0).getPrescriptions().get(x).getName().contains(s) || data.getUsers().get(0).getPrescriptions().get(x).getRefill().contains(s) || s.equals(""))
+                    temp.add(data.getUsers().get(0).getPrescriptions().get(x));
+            }
+        PatientmAdapter = new patientMedAdapter((ArrayList<Prescriptions>) temp);
+        PatientrecyclerView.setAdapter(PatientmAdapter);
+        PatientrecyclerView.setLayoutManager(layoutManager);
+
+    }
+
 
 
 }

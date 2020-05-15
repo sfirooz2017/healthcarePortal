@@ -6,12 +6,17 @@
     android:orientation="vertical"
     tools:context=".ui.orders.PatientOrdersFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-<TextView
-    android:id="@+id/ordersView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/searchViewPatientOrders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:focusable="false"
+        android:hint="Enter order number, order content, or left center date "
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
 
     <androidx.recyclerview.widget.RecyclerView
